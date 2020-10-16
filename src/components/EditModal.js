@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, TextInput, View, Button, Modal, Alert } from 'react-native'
-import { THEME } from '../theme'
+import { StyleSheet, View, TextInput, Modal, Alert } from 'react-native';
+import { THEME } from '../theme';
+import { AppButton } from './ui/AppButton';
 
 export const EditModal = ({ visible, onCancel, value, onSave }) => {
 
@@ -8,11 +9,17 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
 
     const saveHandler = () => {
         if (title.trim().length < 3) {
-            Alert.alert('Error', `Minimum title length 3 characters. Now ${title.trim().length} characters`)
+            Alert.alert('Ошибка!', `Минимальная длина названия 3 символа.Сейчас ${title.trim().length} символов`)
         } else {
             onSave(title)
         }
     }
+
+    const canselHandler = () => {
+        setTitle(value)
+        onCancel()
+    }
+
 
     return (
         <Modal
@@ -21,28 +28,28 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
             transparent={false}
         >
             <View style={styles.wrap}>
-                <TextInput style={styles.input}
+                <TextInput
                     value={title}
                     onChangeText={setTitle}
-                    placeholder="Enter title"
+                    style={styles.input}
+                    placeholder='Введите название'
                     autoCapitalize='none'
                     autoCorrect={false}
                     maxLength={64}
                 />
                 <View style={styles.buttons}>
-                    <Button title="Cancel" onPress={onCancel} color={THEME.DANGER_COLOR} />
-                    <Button title="Save" onPress={saveHandler} />
+                    <AppButton onPress={canselHandler} color={THEME.DANGER_COLOR}>Отменить</AppButton>
+                    <AppButton onPress={saveHandler}>Сохранить</AppButton>
                 </View>
+
             </View>
         </Modal>
     )
 }
-
-
 const styles = StyleSheet.create({
     wrap: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: 'center',
         alignItems: 'center',
     },
     input: {
@@ -58,3 +65,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around'
     }
 })
+
+

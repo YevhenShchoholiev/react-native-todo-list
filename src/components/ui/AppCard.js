@@ -1,15 +1,11 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View, } from 'react-native';
 
-export const AppCard = props => {
-    return (
-        <View style={{ ...styles.default, ...props.style }}>
-            {props.children}
-        </View>
-    )
-}
-
-
+export const AppCard = props => (
+    <View style={{...styles.default,...props.style}}>
+        {props.children}
+    </View>
+)
 const styles = StyleSheet.create({
     default: {
         padding: 20,
@@ -20,8 +16,8 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         shadowOpacity: 0.3,
         shadowOffset: { width: 2, height: 2 },
-        elevation: 8,
-        backgroundColor: '#fff',
-        borderRadius: 10,
+        backgroundColor:'#fff',
+        borderRadius:10,
+        elevation:8,
     }
 })

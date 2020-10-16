@@ -1,14 +1,16 @@
 {
   "expo": {
-    "name": "react-native-todo-list",
-    "slug": "react-native-todo-list",
+    "name": "Todo Application",
+    "slug": "rn-todo-app",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
