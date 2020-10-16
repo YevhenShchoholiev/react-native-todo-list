@@ -28,7 +28,7 @@ export const TodoState = ({ children }) => {
         clearError()
         try {
             const data = await Http.post(
-                'https://rn-todo-app-c79d8.firebaseio.com/todos.json',
+                'https://rn-todo-app-c79d8888.firebaseio.com/todos.json',
                 { title }
             )
             dispatch({ type: ADD_TODO, title, id: data.name })
@@ -54,7 +54,7 @@ export const TodoState = ({ children }) => {
                         changeScreen(null)
                         clearError()
                         try {
-                            await Http.delete(`https://rn-todo-app-c79d8.firebaseio.com/todos/${id}.json`,'DELETE')
+                            await Http.delete(`https://rn-todo-app-c79d8888.firebaseio.com/todos/${id}.json`,'DELETE')
                         } catch (error) {
                             showError('Что пошло не так')
                         }
@@ -72,7 +72,7 @@ export const TodoState = ({ children }) => {
         showLoader()
         clearError()
         try {
-            const data = await Http.get(`https://rn-todo-app-c79d8.firebaseio.com/todos.json`)
+            const data = await Http.get(`https://rn-todo-app-c79d8888.firebaseio.com/todos.json`)
             const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
             dispatch({ type: FETCH_TODOS, todos })
         } catch (error) {
@@ -86,7 +86,7 @@ export const TodoState = ({ children }) => {
     const updateTodo = async (id, title) => {
         clearError()
         try {
-            await Http.patch(`https://rn-todo-app-c79d8.firebaseio.com/todos/${id}.json`,{title})
+            await Http.patch(`https://rn-todo-app-c79d8888.firebaseio.com/todos/${id}.json`,{title})
             dispatch({ type: UPDATE_TODO, id, title })
         } catch (error) {
             showError('Что то пошло не так....')
